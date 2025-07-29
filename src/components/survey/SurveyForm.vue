@@ -222,21 +222,25 @@ export default {
 <style scoped>
 /* 问题样式 */
 .question {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .question label {
   display: block;
-  margin-bottom: 10px;
+  font-size: 16px;
   font-weight: 500;
-  color: #444;
+  color: #4a5568;
+  margin-bottom: 12px;
+  line-height: 1.5;
 }
 
 .question small {
   display: block;
-  color: #888;
-  font-size: 12px;
-  margin-top: 5px;
+  color: #6b7280;
+  font-size: 13px;
+  margin-top: 8px;
+  font-weight: 400;
+  opacity: 0.8;
 }
 
 /* 文本输入框样式 */
@@ -244,44 +248,150 @@ input[type="text"],
 input[type="tel"],
 textarea {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 14px;
-  transition: border 0.3s;
+  padding: 16px 18px;
+  border: 2px solid rgba(102, 126, 234, 0.2);
+  border-radius: 12px;
+  font-size: 15px;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.9);
+  color: #374151;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(5px);
 }
 
 input[type="text"]:focus,
 input[type="tel"]:focus,
 textarea:focus {
-  border-color: #0078d7;
+  border-color: #667eea;
   outline: none;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 0 0 3px rgba(102, 126, 234, 0.1),
+    0 4px 12px rgba(102, 126, 234, 0.15);
+  transform: translateY(-1px);
+}
+
+input[type="text"]::placeholder,
+input[type="tel"]::placeholder,
+textarea::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
 }
 
 textarea {
   resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
 }
 
 /* 提交按钮样式 */
 .submit-container {
   text-align: center;
-  margin-top: 30px;
-  margin-bottom: 50px;
+  margin-top: 40px;
+  margin-bottom: 60px;
+  padding: 0 20px;
 }
 
 button[type="submit"] {
-  background-color: #0078d7;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  padding: 12px 30px;
-  font-size: 16px;
-  border-radius: 25px;
+  padding: 16px 40px;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 50px;
   cursor: pointer;
-  transition: background-color 0.3s;
-  box-shadow: 0 3px 10px rgba(0, 120, 215, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 8px 25px rgba(102, 126, 234, 0.3),
+    0 3px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+  min-width: 160px;
+}
+
+button[type="submit"]:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
 }
 
 button[type="submit"]:hover {
-  background-color: #0063b1;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 35px rgba(102, 126, 234, 0.4),
+    0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+button[type="submit"]:hover:before {
+  left: 100%;
+}
+
+button[type="submit"]:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 5px 15px rgba(102, 126, 234, 0.3),
+    0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 480px) {
+  input[type="text"],
+  input[type="tel"],
+  textarea {
+    padding: 14px 16px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+  
+  textarea {
+    min-height: 100px;
+  }
+  
+  .submit-container {
+    margin-top: 32px;
+    margin-bottom: 40px;
+    padding: 0 15px;
+  }
+  
+  button[type="submit"] {
+    padding: 14px 32px;
+    font-size: 16px;
+    min-width: 140px;
+  }
+  
+  .question label {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .question small {
+    font-size: 12px;
+    margin-top: 6px;
+  }
+}
+
+@media (max-width: 360px) {
+  input[type="text"],
+  input[type="tel"],
+  textarea {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+  
+  button[type="submit"] {
+    padding: 12px 28px;
+    font-size: 15px;
+    min-width: 120px;
+  }
+  
+  .question label {
+    font-size: 14px;
+  }
 }
 </style>
